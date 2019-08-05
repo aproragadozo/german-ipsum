@@ -20,6 +20,6 @@ npm run build
 
 ### Lints and fixes files
 
-```
+```shell
 npm run lint
 ```
