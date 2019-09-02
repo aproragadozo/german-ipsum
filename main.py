@@ -51,6 +51,9 @@ mondatok = [
 def hello_world():
     mondat = Sentence.query.get(random.randint(0, Sentence.query.count()))
     # mondat = mondatok[0]
+    # if the front-end is Vue, instead of rendering a template,
+    # you'll need to return data here,
+    # that the Vue app can query the "/" route for
     return render_template("index.html", mondat = mondat)
 
 # run Flask app
