@@ -10,7 +10,8 @@
     "dependencies": {
         "register-service-worker": "^1.6.2",
         "vue": "^2.6.6",
-        "lodash.template": ">=4.5.0"
+        "lodash.template": ">=4.5.0",
+        "eslint-utils": ">=1.4.1"
     },
     "devDependencies": {
         "@vue/cli-plugin-babel": "^3.0.0",
@@ -20,6 +21,7 @@
         "@vue/eslint-config-airbnb": "^4.0.0",
         "babel-eslint": "^10.0.1",
         "eslint": "^5.8.0",
+        "eslint-utils": ">=1.4.1",
         "eslint-plugin-vue": "^5.0.0",
         "vue-template-compiler": "^2.5.21"
     }
