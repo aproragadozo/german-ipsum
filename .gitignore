@@ -22,3 +22,6 @@ yarn-error.log*
 
 # zipped folder
 .gz
+
+# vscode
+/.vscode
