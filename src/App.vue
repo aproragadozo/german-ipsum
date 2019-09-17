@@ -1,14 +1,14 @@
 <template>
-    <IpsumWrapper/>
+    <MondatTest/>
 </template>
 
 <script>
-import IpsumWrapper from './components/IpsumWrapper.vue';
+import MondatTest from './components/MondatTest.vue';
 
 export default {
   name: 'app',
   components: {
-    IpsumWrapper,
+    MondatTest
   },
 };
 </script>

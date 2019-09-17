@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, url_for, jsonify
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 import random
 
@@ -13,20 +14,9 @@ class CustomFlask(Flask):
 
 app = CustomFlask(__name__)  # This replaces your existing "app = Flask(__name__)"
 
-app.config["DEBUG"] = True
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
-
-#SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
-#    username="aproragadozo",
-#    password="P1roska?",
-#    hostname="aproragadozo.mysql.pythonanywhere-services.com",
-#    databasename="aproragadozo$sentences",
-#)
-
-SQLALCHEMY_DATABASE_URI = 'mysql://root:''@localhost/adat'
-app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
-# app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config.from_pyfile('db.cfg')
 
 db = SQLAlchemy(app)
 
@@ -40,28 +30,22 @@ class Sentence(db.Model):
     def __init__(self, content):
         self.content = content
 
-mondatok = [
-    {
-        'id': 1,
-        'content': 'Was soll den diese Faselei, komm doch mal zum Sache!'
-    }
-]
+mondatok = []
 
 @app.route("/")
 def hello_world():
     mondat = Sentence.query.get(random.randint(0, Sentence.query.count()))
-    # mondat = mondatok[0]
-    return render_template("index.html", mondat = mondat)
+    mondatok.append(mondat)
+    return jsonify({"mondatok": [mondat for mondat in mondatok]})
+    # return render_template("index.html", mondat = mondatok[0])
 
-    #turns out render_template is much better suited to what I'm trying to do
-    #leaving the data-return option here for reference
-    #row_as_dict = []
-    #cell_as_dict = {
-    #    'id': mondat.id,
-    #    'content': mondat.content
-    #}
-    #row_as_dict.append(cell_as_dict)
-    #return jsonify(cell_as_dict)
+# accept cors headers
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    return response
 
 # run Flask app
 if __name__ == "__main__":
