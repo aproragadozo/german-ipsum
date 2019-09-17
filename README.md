@@ -1,25 +1,13 @@
-# german-ipsum
+Using Flask and Flask-SQLAlchemy (but not Vue, yet) to query a random record from a MySQL table with nearly 30K German sentences taken from the [Universität Leipzig Corpora](https://corpora.uni-leipzig.de/en?corpusId=deu_newscrawl-public_2018).
 
-## Project setup
+Removed the Vue-CLI boilerplate from this branch.
 
-```shell
-npm install
-```
+I'd like to explore building out the site
 
-### Compiles and hot-reloads for development
+1. without Vue (or any significant amount of JS);
 
-```shell
-npm run serve
-```
+2. using Vue components to improve the UI;
 
-### Compiles and minifies for production
+3. merging back to `master`;
 
-```shell
-npm run build
-```
-
-### Lints and fixes files
-
-```shell
-npm run lint
-```
+4. deploying the whole thing to Heroku.
