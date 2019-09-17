@@ -50,7 +50,7 @@ sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
 <script>
 export default {
-  name: 'IpsumText',
+  name: 'IpsumWrapper',
 };
 </script>
 
