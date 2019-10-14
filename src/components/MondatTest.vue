@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div>
         <h1>Mu-ha-ha</h1> 
 
         <table>
@@ -10,6 +10,12 @@
                 </tr>
             </thead>
             <tbody>
+                <!--
+                <tr v-bind:key="mondat" v-for="(key, value) in mondat">
+                    <td>{{key}}</td>
+                    <td>{{value}}</td>
+                </tr>
+                -->
                 <tr v-bind:key="mondat" v-for="mondat in mondatok">
                     <td>{{mondat.id}}</td>
                     <td>{{mondat.content}}</td>
@@ -45,4 +51,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+body {
+    font-size: 40px;
+}
 </style>

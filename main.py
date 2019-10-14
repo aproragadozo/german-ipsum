@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, url_for, jsonify
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 import random
+import json
 
 app = Flask(__name__)
 
@@ -35,8 +36,14 @@ mondatok = []
 @app.route("/")
 def hello_world():
     mondat = Sentence.query.get(random.randint(0, Sentence.query.count()))
-    mondatok.append(mondat)
-    return jsonify({"mondatok": [mondat for mondat in mondatok]})
+    data = {
+        "id": mondat.id,
+        "content": mondat.content
+    }
+    mondatok.append(data)
+    # return json.dumps(data)
+    return {"mondatok": data}
+    #return jsonify({"mondatok": [mondat for mondat in mondatok]})
     # return render_template("index.html", mondat = mondatok[0])
 
 # accept cors headers

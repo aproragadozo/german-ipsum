@@ -1,4 +1,4 @@
-<template>
+<template id="app">
     <MondatTest/>
 </template>
 
